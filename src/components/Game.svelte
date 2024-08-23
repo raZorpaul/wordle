@@ -248,7 +248,7 @@
 		<div>
 			<div>v{version}</div>
 			<div
-				title="double click to reset your stats"
+				title="bofya mara mbili ili kuweka upya takwimu zako"
 				class="word"
 				on:dblclick={() => {
 					localStorage.clear();

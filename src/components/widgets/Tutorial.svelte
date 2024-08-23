@@ -5,53 +5,53 @@
 	export let visible: boolean;
 </script>
 
-<h3>how to play</h3>
-<div>Guess the <strong>WORDLE</strong> in {ROWS} tries.</div>
-<div>Each guess must be a valid {COLS} letter word. Hit the enter button to submit.</div>
+<h3>Jinsi ya kucheza</h3>
+<div>Nadhani <strong>NENO</strong> katika majaribio ya {ROWS}.</div>
+<div>Kila nadhani lazima iwe neno halali la herufi {COLS}. Bonyeza kitufe cha Ingiza ili kuwasilisha.</div>
 <div>
-	After each guess, the color of the tiles will change to show how close your guess was to the
-	word.
+Baada ya kila nadhani, rangi ya vigae itabadilika ili kuonyesha jinsi nadhani yako ilikuwa karibu na
+	neno.
 </div>
 <div class:complete={visible} class="examples">
-	<div><strong>Examples</strong></div>
+	<div><strong>Mifano</strong></div>
 	<div class="row">
-		<Tile value="w" state="🟩" />
-		<Tile value="e" state="🔳" />
-		<Tile value="a" state="🔳" />
-		<Tile value="r" state="🔳" />
+		<Tile value="n" state="🟩" />
 		<Tile value="y" state="🔳" />
+		<Tile value="o" state="🔳" />
+		<Tile value="t" state="🔳" />
+		<Tile value="a" state="🔳" />
 	</div>
-	<div>The letter <strong>W</strong> is in the word and in the correct spot.</div>
+	<div>The letter <strong>N</strong> iko katika neno na mahali pazuri.</div>
+	<div class="row">
+		<Tile value="m" state="🔳" />
+		<Tile value="a" state="🟨" />
+		<Tile value="m" state="🔳" />
+		<Tile value="b" state="🔳" />
+		<Tile value="o" state="🔳" />
+	</div>
+	<div>Herufi<strong>I</strong> iko kwenye neno lakini iko mahali pabaya.</div>
 	<div class="row">
 		<Tile value="p" state="🔳" />
-		<Tile value="i" state="🟨" />
-		<Tile value="l" state="🔳" />
-		<Tile value="l" state="🔳" />
-		<Tile value="s" state="🔳" />
-	</div>
-	<div>The letter <strong>I</strong> is in the word but in the wrong spot.</div>
-	<div class="row">
-		<Tile value="v" state="🔳" />
-		<Tile value="a" state="🔳" />
-		<Tile value="g" state="🔳" />
-		<Tile value="u" state="⬛" />
 		<Tile value="e" state="🔳" />
+		<Tile value="n" state="🔳" />
+		<Tile value="d" state="⬛" />
+		<Tile value="o" state="🔳" />
 	</div>
-	<div>The letter <strong>U</strong> is not in the word in any spot.</div>
+	<div>Herufi  <strong>d</strong> haiku kwenye neno</div>
 </div>
 <div>
-	This is a recreation of the original <a
+Hii ni burudani ya asili <a
 		href="https://www.nytimes.com/games/wordle/"
-		target="_blank"
-		rel="noreferrer">Wordle</a
+		lengo="_tupu"
+		rel="noreferrer">Neno</a
 	>
-	by Josh Wardle with additional modes and features, allowing you to play infinite wordles. Switch
-	to infinite mode to play an unlimited number of times.
+	na Josh Wardle na hali na vipengele vya ziada, vinavyokuruhusu kucheza maneno yasiyo na kikomo. Badili
+	kwa hali isiyo na kikomo ya kucheza idadi isiyo na kikomo ya nyakati.
 	<br /><br />
-	Open the settings menu to see some of the additional features.
+	Fungua menyu ya mipangilio ili kuona baadhi ya vipengele vya ziada.
 	<br />
-	Written with Svelte, in Typescript by
-	<a href="https://github.com/MikhaD" target="_blank" rel="noreferrer">MikhaD</a>.
+	Imeandikwa na Svelte, katika Typescript na
+	<a href="https://github.com/raZorpaul" target="_blank" rel="noreferrer">Joshua</a>.
 </div>
 
 <style lang="scss">
