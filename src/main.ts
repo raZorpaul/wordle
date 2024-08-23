@@ -1,7 +1,8 @@
 //! IF ANYTHING IN THIS FILE IS CHANGED MAKE SURE setVersion.js HAS ALSO BEEN UPDATED
 import App from "./App.svelte";
 import { inject } from '@vercel/analytics'
-import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+// import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+import { injectSpeedInsights } from '@vercel/speed-insights';
 
 injectSpeedInsights();
 inject();
