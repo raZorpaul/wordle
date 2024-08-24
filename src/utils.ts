@@ -6,11 +6,23 @@ export const ROWS = 6;
 export const COLS = 5;
 
 export const words = {
-	...wordList,
-	contains: (word: string) => {
-		return wordList.words.includes(word) || wordList.valid.includes(word);
-	},
+    words: wordList.words.filter(word => word.length === 5),
+    valid: wordList.valid.filter(word => word.length === 5),
+    contains: (word: string) => {
+        if (word.length !== 5) return false;
+        return words.words.includes(word) || words.valid.includes(word);
+    },
 };
+
+// Add this function to select a random 5-letter word
+export function selectFiveLetterWord(seed: number) {
+    if (words.words.length === 0) {
+        console.error("No 5-letter words found in the word list!");
+        return null;
+    }
+    const randomIndex = seededRandomInt(0, words.words.length, seed);
+    return words.words[randomIndex];
+}
 
 class Tile {
 	public value: string;

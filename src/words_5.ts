@@ -14,7 +14,6 @@ const words = {
         "ndogo",  // Small
         "jikoni", // Kitchen
         "kitabu", // Book
-        "furaha", // Happiness
         "barua",  // Letter
         "kiatu",  // Shoe
         "mkate",  // Bread
