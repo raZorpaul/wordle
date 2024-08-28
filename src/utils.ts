@@ -224,13 +224,14 @@ export function seededRandomInt(min: number, max: number, seed: number) {
 export const DELAY_INCREMENT = 200;
 
 export const PRAISE = [
-	"Genius",
-	"Magnificent",
-	"Impressive",
-	"Splendid",
-	"Great",
-	"Phew",
+	"Mwanafalsafa",   // Genius
+	"Ajabu",          // Magnificent
+	"Ya kuvutia",     // Impressive
+	"Shukrani",       // Splendid
+	"Nzuri",          // Great
+	"Ah, hatimaye",
 ];
+
 
 abstract class Storable {
 	toString() { return JSON.stringify(this); }
@@ -473,3 +474,15 @@ export function timeRemaining(m: Mode) {
 export function failed(s: GameState) {
 	return !(s.active || (s.guesses > 0 && s.board.state[s.guesses - 1].join("") === "🟩".repeat(COLS)));
 }
+
+export function getHint(word: string, currentGuess: string, hintCount: number): string {
+	const unguessedLetters = word.split('').filter((letter, index) => currentGuess[index] !== letter);
+	
+	if (hintCount === 0) {
+	  return `Neno inaherufi   "${unguessedLetters[0].toUpperCase()}"`;
+	} else if (hintCount === 1) {
+	  return `Herufi inaanza na"${word[0].toUpperCase()}"`;
+	} else {
+	  return `Herufi inaishia na  "${word[word.length - 1].toUpperCase()}"`;
+	}
+  }

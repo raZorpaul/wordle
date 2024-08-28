@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { fade } from "svelte/transition";
+	// import { dev } from "$app/environment";
 	import Header from "./Header.svelte";
 	import { Board } from "./board";
 	import Keyboard from "./keyboard";
@@ -32,6 +33,7 @@
 		LetterStates,
 		words,
 		Stats,
+		getHint
 	} from "../utils";
 	import { letterStates, settings, mode } from "../stores";
 
@@ -54,10 +56,11 @@
 
 	let board: Board;
 	let timer: Timer;
+	let hintCount = 0;
 
 	function submitWord() {
 		if (game.latestWord.length !== COLS) {
-			toaster.pop("Not enough letters");
+			toaster.pop("Herufi hazitoshi");
 			board.shake(game.guesses);
 		} else {
 			if (game.guesses > 0) {
@@ -65,12 +68,12 @@
 				if ($settings.hard[$mode]) {
 					if (hm.type === "🟩") {
 						toaster.pop(
-							`${contractNum(hm.pos + 1)} letter must be ${hm.char.toUpperCase()}`
+							`${contractNum(hm.pos + 1)} Herufi lazima iwe ${hm.char.toUpperCase()}`
 						);
 						board.shake(game.guesses);
 						return;
 					} else if (hm.type === "🟨") {
-						toaster.pop(`Guess must contain ${hm.char.toUpperCase()}`);
+						toaster.pop(`Nadhani lazima iwe na ${hm.char.toUpperCase()}`);
 						board.shake(game.guesses);
 						return;
 					}
@@ -102,6 +105,19 @@
 		}
 	}
 
+	// Add this function to provide a hint
+	function provideHint() {
+	if (hintCount < 3 && game.active) {
+		const hint = getHint(word, game.board.words[game.guesses], hintCount);
+		toaster.pop(hint);
+		hintCount++;
+	} else if (!game.active) {
+		toaster.pop("Mchezo umeisha");
+	} else {
+		toaster.pop("Hamna kidokezo tena");
+	}
+	}
+
 	function lose() {
 		game.active = false;
 		setTimeout(setShowStatsTrue, delay);
@@ -127,6 +143,7 @@
 		showStats = false;
 		showRefresh = false;
 		timer.reset($mode);
+		hintCount = 0; // Reset hint count when starting a new game
 	}
 
 	function setShowStatsTrue() {
@@ -148,7 +165,10 @@
 
 	onMount(() => {
 		if (!game.active) setTimeout(setShowStatsTrue, delay);
+		console.log(word)
 	});
+
+
 	// $: toaster.pop(word);
 </script>
 
@@ -189,6 +209,7 @@
 		}}
 		disabled={!game.active || $settings.tutorial === 3 || showHistorical}
 	/>
+	<div class="hint-button" on:click={provideHint}>Get Hint</div>
 </main>
 
 <Modal
@@ -281,5 +302,18 @@
 	}
 	.concede {
 		background-color: var(--red);
+	}
+	.hint-button {
+		background-color: var(--color-tone-2);
+		color: var(--color-tone-7);
+		padding: 10px 20px;
+		border-radius: 5px;
+		border: 1px solid var(--color-tone-2);
+		cursor: pointer;
+		margin-bottom: 10px;
+		user-select: none;
+	}
+	.hint-button:hover {
+		background-color: var(--color-tone-3);
 	}
 </style>

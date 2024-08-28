@@ -37,7 +37,7 @@
 			{/each}
 		</ol>
 	{:catch}
-		<div>Your word was <strong>{word}</strong>. (failed to fetch definition)</div>
+		<div>Neno lako lilikua <strong>{word.toUpperCase()}</strong></div>
 	{/await}
 </div>
 
