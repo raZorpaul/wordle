@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { fade } from "svelte/transition";
+	import { fade, fly } from "svelte/transition";
 	// import { dev } from "$app/environment";
 	import Header from "./Header.svelte";
 	import { Board } from "./board";
@@ -58,6 +58,9 @@
 	let timer: Timer;
 	let hintCount = 0;
 
+	let showFireworks = false;
+	const fireworkColors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+
 	function submitWord() {
 		if (game.latestWord.length !== COLS) {
 			toaster.pop("Herufi hazitoshi");
@@ -93,6 +96,12 @@
 	function win() {
 		board.bounce(game.guesses - 1);
 		game.active = false;
+		showFireworks = true;
+		console.log("Fireworks triggered!"); // Debug log
+		setTimeout(() => {
+			showFireworks = false;
+			console.log("Fireworks hidden"); // Debug log
+		}, 3000); // Display fireworks for 3 seconds
 		setTimeout(
 			() => toaster.pop(PRAISE[game.guesses - 1]),
 			DELAY_INCREMENT * COLS + DELAY_INCREMENT
@@ -210,6 +219,25 @@
 		disabled={!game.active || $settings.tutorial === 3 || showHistorical}
 	/>
 	<div class="hint-button" on:click={provideHint}>Get Hint</div>
+
+	{#if showFireworks}
+		<div class="fireworks" transition:fade={{ duration: 1000 }}>
+			{#each Array(3) as _, burstIndex}
+				{#each Array(20) as _, i}
+					<div
+						class="particle"
+						style="
+							--angle: {i * 18}deg;
+							--delay: {burstIndex * 500 + i * 50}ms;
+							--color: {fireworkColors[Math.floor(Math.random() * fireworkColors.length)]};
+							--burst-offset-x: {(Math.random() - 0.5) * 100}px;
+							--burst-offset-y: {(Math.random() - 0.5) * 100}px;
+						"
+					/>
+				{/each}
+			{/each}
+		</div>
+	{/if}
 </main>
 
 <Modal
@@ -305,7 +333,8 @@
 	}
 	.hint-button {
 		background-color: var(--color-tone-2);
-		color: var(--color-tone-7);
+		// color: var(--color-tone-7);
+		color: yellow;
 		padding: 10px 20px;
 		border-radius: 5px;
 		border: 1px solid var(--color-tone-2);
@@ -315,5 +344,43 @@
 	}
 	.hint-button:hover {
 		background-color: var(--color-tone-3);
+	}
+
+	.fireworks {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 9999;
+	}
+
+	.particle {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 10px;
+		height: 10px;
+		background: var(--color);
+		border-radius: 50%;
+		transform: translate(-50%, -50%) translateX(var(--burst-offset-x)) translateY(var(--burst-offset-y));
+		animation: explode 1.5s ease-out forwards;
+		animation-delay: var(--delay);
+	}
+
+	@keyframes explode {
+		0% {
+			opacity: 1;
+			transform: translate(-50%, -50%) translateX(var(--burst-offset-x)) translateY(var(--burst-offset-y)) scale(0.1);
+		}
+		50% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+			transform: translate(-50%, -50%) translateX(calc(var(--burst-offset-x) + (cos(var(--angle)) * 100px))) 
+						 translateY(calc(var(--burst-offset-y) + (sin(var(--angle)) * 100px))) scale(0.5);
+		}
 	}
 </style>
