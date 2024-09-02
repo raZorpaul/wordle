@@ -88,7 +88,7 @@
 			<path d={icon} stroke-width="14" />
 		</svg>
 	{/if}
-	{#if tutorial}
+	<!-- {#if tutorial}
 		<div
 			transition:scale
 			class="tutorial"
@@ -98,7 +98,7 @@
 			gusa safu mlalo mara mbili ili kuona ufafanuzi wa neno, au ni maneno mangapi yanaweza kuchezwa hapo
 			<span class="ok">OK</span>
 		</div>
-	{/if}
+	{/if} -->
 </div>
 
 <style>

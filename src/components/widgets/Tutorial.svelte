@@ -6,10 +6,10 @@
 </script>
 
 <h3>Jinsi ya kucheza</h3>
-<div>Nadhani <strong>NENO</strong> katika majaribio ya {ROWS}.</div>
-<div>Kila nadhani lazima iwe neno halali la herufi {COLS}. Bonyeza kitufe cha Ingiza ili kuwasilisha.</div>
+<div>Bahatisha <strong>NENO</strong> katika majaribio ya {ROWS}.</div>
+<div>Kila  neno  ulio bahatisha lazima iwe neno halali la herufi {COLS}. Bonyeza  Return  ili kuwasilisha.</div>
 <div>
-Baada ya kila nadhani, rangi ya vigae itabadilika ili kuonyesha jinsi nadhani yako ilikuwa karibu na
+Baada ya kila bahati, rangi ya vigae itabadilika ili kuonyesha jinsi nadhani yako ilikuwa karibu na
 	neno.
 </div>
 <div class:complete={visible} class="examples">
@@ -21,7 +21,7 @@ Baada ya kila nadhani, rangi ya vigae itabadilika ili kuonyesha jinsi nadhani ya
 		<Tile value="t" state="🔳" />
 		<Tile value="a" state="🔳" />
 	</div>
-	<div>The letter <strong>N</strong> iko katika neno na mahali pazuri.</div>
+	<div>Herufi  <strong>N</strong> iko katika neno na mahali pazuri.</div>
 	<div class="row">
 		<Tile value="m" state="🔳" />
 		<Tile value="a" state="🟨" />
@@ -40,14 +40,14 @@ Baada ya kila nadhani, rangi ya vigae itabadilika ili kuonyesha jinsi nadhani ya
 	<div>Herufi  <strong>d</strong> haiku kwenye neno</div>
 </div>
 <div>
-Hii ni burudani ya asili <a
+<!-- Hii ni burudani ya asili <a
 		href="https://www.nytimes.com/games/wordle/"
 		lengo="_tupu"
 		rel="noreferrer">Neno</a
 	>
 	na Josh Wardle na hali na vipengele vya ziada, vinavyokuruhusu kucheza maneno yasiyo na kikomo. Badili
 	kwa hali isiyo na kikomo ya kucheza idadi isiyo na kikomo ya nyakati.
-	<br /><br />
+	<br /><br /> -->
 	Fungua menyu ya mipangilio ili kuona baadhi ya vipengele vya ziada.
 	<br />
 	Imeandikwa na Svelte, katika Typescript na

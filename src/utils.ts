@@ -166,7 +166,7 @@ export function newSeed(mode: GameMode, time?: number) {
 }
 
 export const modeData: ModeData = {
-	default: GameMode.daily,
+	default: GameMode.infinite,
 	modes: [
 		{
 			name: "Daily",

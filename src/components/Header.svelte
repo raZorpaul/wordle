@@ -64,17 +64,17 @@
 			/>
 		</GameIcon>
 	</div>
-	{#if tutorial}
+	<!-- {#if tutorial}
 		<div
 			transition:scale
 			class="tutorial"
 			on:click={() => dispatch("closeTutPopUp")}
 			on:keydown={() => dispatch("closeTutPopUp")}
 		>
-		Telezesha kidole kwenye ubao au uguse WORDLE+ ili kubadilisha hali ya mchezo
+		Telezesha kidole kwenye ubao au uguse NENO+ ili kubadilisha hali ya mchezo
 			<span class="ok">OK</span>
 		</div>
-	{/if}
+	{/if} -->
 </header>
 
 <style lang="scss">

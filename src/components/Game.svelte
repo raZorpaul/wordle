@@ -218,7 +218,7 @@
 		}}
 		disabled={!game.active || $settings.tutorial === 3 || showHistorical}
 	/>
-	<div class="hint-button" on:click={provideHint}>Get Hint</div>
+	<div class="hint-button" on:click={provideHint}>Pata Msaada</div>
 
 	{#if showFireworks}
 		<div class="fireworks" transition:fade={{ duration: 1000 }}>
@@ -332,18 +332,21 @@
 		background-color: var(--red);
 	}
 	.hint-button {
-		background-color: var(--color-tone-2);
-		// color: var(--color-tone-7);
-		color: yellow;
+		background: linear-gradient(45deg, #ff6b6b, #f06595);
+		color: white;
 		padding: 10px 20px;
 		border-radius: 5px;
-		border: 1px solid var(--color-tone-2);
+		border: none;
 		cursor: pointer;
 		margin-bottom: 10px;
 		user-select: none;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		transition: background 0.3s, transform 0.3s;
 	}
 	.hint-button:hover {
-		background-color: var(--color-tone-3);
+		background: linear-gradient(45deg, #f06595, #ff6b6b);
+		transform: translateY(-2px);
+		box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 	}
 
 	.fireworks {
